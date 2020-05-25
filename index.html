@@ -29,6 +29,7 @@
   BACK_COLORS = [`rgb(227, 209, 197)`, `rgb(150, 104, 75)`];
   FIGURE_COLORS = [`rgb(59, 25, 2)`, `rgb(212, 183, 163)`];
   HIGHLIGHT_COLOR = `rgb(240, 237, 105)`;
+  QUEEN_COLOR = `rgb(227, 116, 39)`;
 
   canvas = document.getElementById('game');
   context = canvas.getContext('2d');
@@ -164,9 +165,11 @@
             context.arc(x + CELL_SIZE / 2, y + CELL_SIZE / 2, RADIUS, 0, 2 * Math.PI, false);
             context.fillStyle = FIGURE_COLORS[this.board[i][j] % 2];
             context.fill();
-            // context.lineWidth = 5;
-            // context.strokeStyle = '#003300';
-            // context.stroke();        
+            if (this.board[i][j] > 2) {
+              context.lineWidth = 5;
+              context.strokeStyle = QUEEN_COLOR;
+              context.stroke();
+            }  
           }
         }
       }
